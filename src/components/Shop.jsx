@@ -1,14 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Product from './Product';
 import Cart from './Cart';
+import { addToDb, getShoppingCart } from '../utilities/fakedb';
 
 const Shop = () => {
     const products = useLoaderData();
     const [cart, setCart] = useState([]);
+    
+    useEffect(() => {
+        const storedCart = getShoppingCart();
+        let savedCart = [];
+        for (const id in storedCart) {
+            const quantity = storedCart[id];
+            const addedProduct = products.find(product => product.id === id);
+            addedProduct.quantity = quantity;
+            savedCart.push(addedProduct);
+        }
+        setCart(savedCart);
+    }, [])
 
     const handleClick = (product) => {
-        setCart([...cart, product])
+        setCart([...cart, product]);
+        addToDb(product.id);
     }
     return (
         <div className='md:grid grid-cols-[4fr_1fr] gap-12'>
