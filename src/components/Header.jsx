@@ -6,7 +6,7 @@ const Header = () => {
     const [open, setOpen] = useState(false);
     return (
         <nav className='bg-[#1C2B35] '>
-            <div className='flex justify-between items-center px-3 lg:px-0 py-4 text-xl max-w-screen-xl mx-auto'>
+            <div className='flex justify-between items-center px-3 lg:px-0 py-5 text-xl max-w-screen-xl mx-auto'>
                 <NavLink to={'/'}>
                     <img src={logo} alt="" />
                 </NavLink>
