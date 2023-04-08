@@ -1,11 +1,12 @@
 import React from 'react';
+import { deleteShoppingCart } from '../utilities/fakedb';
 
 const Cart = ({ cart }) => {
     let totalPrice = 0;
     let totalShipping = 0;
     let quantity = 0;
     for (const product of cart) {
-        product.quantity = product.quantity || 1;
+        // product.quantity = product.quantity || 1;
         totalPrice = totalPrice + product.price * product.quantity;
         totalShipping = totalShipping + product.shipping;
         quantity = quantity + product.quantity;
@@ -21,6 +22,7 @@ const Cart = ({ cart }) => {
                 <p>Total Shipping: ${totalShipping}</p>
                 <p>Tax: ${tax.toFixed(2)}</p>
                 <p>Grand Total: ${grandTotaL.toFixed(2)}</p>
+                <button onClick={() => deleteShoppingCart()}>Clear Cart </button>
             </div>
         </div>
     );

@@ -7,7 +7,6 @@ import { addToDb, getShoppingCart } from '../utilities/fakedb';
 const Shop = () => {
     const products = useLoaderData();
     const [cart, setCart] = useState([]);
-    
     useEffect(() => {
         const storedCart = getShoppingCart();
         let savedCart = [];
@@ -21,7 +20,20 @@ const Shop = () => {
     }, [])
 
     const handleClick = (product) => {
-        setCart([...cart, product]);
+        let newCart = [];
+        const exits = cart.find(pd => pd.id === product.id);
+        if (exits) {
+            exits.quantity = exits.quantity + 1;
+            const remaining = cart.filter(pd => pd.id !== product.id);
+            newCart = [...remaining, exits]
+
+        }
+        else {
+            product.quantity = 1;
+            newCart = [...cart, product];
+        }
+        setCart(newCart);
+        // setCart([...cart,product])
         addToDb(product.id);
     }
     return (
