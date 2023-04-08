@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div>
       <Header></Header>
-      <div className='max-w-screen-2xl mx-auto my-16 px-3'>
+      <div className='max-w-screen-xl mx-auto my-16 px-3 md:px-0'>
         <div className='text-center text-4xl font-bold'>{navigation.state === 'loading' ? 'Loading.....' : ''}</div>
         <Outlet></Outlet>
       </div>
