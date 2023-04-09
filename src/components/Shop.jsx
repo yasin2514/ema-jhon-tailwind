@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Product from './Product';
 import Cart from './Cart';
-import { addToDb, getShoppingCart } from '../utilities/fakedb';
+import { addToDb, deleteShoppingCart, getShoppingCart } from '../utilities/fakedb';
+import { ArrowRightIcon } from '@heroicons/react/24/solid'
 
 const Shop = () => {
     const products = useLoaderData();
@@ -35,7 +36,12 @@ const Shop = () => {
         // option 2
         // setCart([...cart,product])
         addToDb(product.id);
+    };
+    const clearCart = () => {
+        setCart([]);
+        deleteShoppingCart();
     }
+
     return (
         <div className='md:grid grid-cols-[4fr_1fr] gap-12'>
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-7'>
@@ -47,10 +53,15 @@ const Shop = () => {
                     ></Product>)
                 }
             </div>
-            <div className='bg-[#ffcd9b] px-4 py-6 rounded-md' >
+            <div className='bg-[#ffcd9b] px-4 py-6 rounded-md h-screen' >
                 <Cart
                     cart={cart}
-                ></Cart>
+                    clearCart={clearCart}
+                >
+                    <Link to='/order' className=''>
+                        <button className='bg-orange-600 flex justify-between items-center text-white rounded-md p-1 hover:bg-orange-700 w-full'>Review Order<ArrowRightIcon className='w-5 inline-block'></ArrowRightIcon></button>
+                    </Link>
+                </Cart>
             </div>
         </div>
     );
