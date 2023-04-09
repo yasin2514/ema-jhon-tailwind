@@ -6,6 +6,7 @@ const Cart = ({ cart }) => {
     let totalShipping = 0;
     let quantity = 0;
     for (const product of cart) {
+        // option 2
         // product.quantity = product.quantity || 1;
         totalPrice = totalPrice + product.price * product.quantity;
         totalShipping = totalShipping + product.shipping;
@@ -22,7 +23,7 @@ const Cart = ({ cart }) => {
                 <p>Total Shipping: ${totalShipping}</p>
                 <p>Tax: ${tax.toFixed(2)}</p>
                 <p>Grand Total: ${grandTotaL.toFixed(2)}</p>
-                <button onClick={() => deleteShoppingCart()}>Clear Cart </button>
+                <button className='bg-red-600 text-white rounded-md p-1 hover:bg-red-700' onClick={() => deleteShoppingCart()}>Clear Cart </button>
             </div>
         </div>
     );

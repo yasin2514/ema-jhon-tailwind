@@ -11,13 +11,13 @@ const Header = () => {
                     <img src={logo} alt="" />
                 </NavLink>
                 <div className='text-white '>
-                    <span className='md:hidden' onClick={() => setOpen(!open)}>
+                    <span className='lg:hidden' onClick={() => setOpen(!open)}>
                         {
                             open ? <XMarkIcon className='w-9'></XMarkIcon> : <Bars3Icon className='w-9'></Bars3Icon>
                         }
                     </span>
-                    <span className={`flex md:gap-10 
-                 absolute md:static md:m-0  ${open ? 'inset-x-0 flex-col bg-[#1C2B35] p-4 gap-1' : '-mt-40'}`}>
+                    <span className={`flex lg:gap-10 
+                 absolute lg:static lg:m-0  ${open ? 'inset-x-0 flex-col bg-[#1C2B35] p-4 gap-1' : '-mt-40'}`}>
                         <NavLink className={({ isActive }) => isActive ? 'text-[#FF9900]' : ''} to={'/'}>Shop</NavLink>
                         <NavLink className={({ isActive }) => isActive ? 'text-[#FF9900]' : ''} to={'/order'}>Order</NavLink>
                         <NavLink className={({ isActive }) => isActive ? 'text-[#FF9900]' : ''} to={'/inventory'}>Inventory</NavLink>

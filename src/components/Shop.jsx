@@ -11,28 +11,28 @@ const Shop = () => {
         const storedCart = getShoppingCart();
         let savedCart = [];
         for (const id in storedCart) {
-            const quantity = storedCart[id];
             const addedProduct = products.find(product => product.id === id);
-            addedProduct.quantity = quantity;
-            savedCart.push(addedProduct);
+            if (addedProduct) {
+                const quantity = storedCart[id];
+                addedProduct.quantity = quantity;
+                savedCart.push(addedProduct);
+            }
         }
         setCart(savedCart);
     }, [])
 
     const handleClick = (product) => {
-        let newCart = [];
         const exits = cart.find(pd => pd.id === product.id);
         if (exits) {
             exits.quantity = exits.quantity + 1;
             const remaining = cart.filter(pd => pd.id !== product.id);
-            newCart = [...remaining, exits]
-
+            setCart([...remaining, exits])
         }
         else {
             product.quantity = 1;
-            newCart = [...cart, product];
+            setCart([...cart, product])
         }
-        setCart(newCart);
+        // option 2
         // setCart([...cart,product])
         addToDb(product.id);
     }

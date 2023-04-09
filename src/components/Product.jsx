@@ -14,7 +14,7 @@ const Product = ({ product, handleClick }) => {
                 <p>Manufacturer: {seller}</p>
                 <p>Rating: {ratings} stars</p>
             </div>
-            <button onClick={() => handleClick(product)} className='text-center mt-auto bg-[#ffcd9b] p-3 rounded-br rounded-bl'>Add to Cart <ShoppingCartIcon className='w-6 inline-block' ></ShoppingCartIcon></button>
+            <button onClick={() => handleClick(product)} className='hover:bg-[#FF9900] text-center mt-auto bg-[#ffcd9b] p-3 rounded-br rounded-bl'>Add to Cart <ShoppingCartIcon className='w-6 inline-block' ></ShoppingCartIcon></button>
         </div>
     );
 };
