@@ -29,7 +29,7 @@ const Order = () => {
                     ></ReviewItem>)
                 }
             </div>
-            <div className='bg-[#ffcd9b] px-4 py-6 rounded-md mt-10 lg:mt-0 h-screen' >
+            <div className='bg-[#ffcd9b] px-4 py-6 rounded-md mt-10 lg:mt-0' >
                 <Cart
                     cart={cart}
                     clearCart={clearCart}

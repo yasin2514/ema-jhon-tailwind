@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '/images/Logo.svg'
 import { XMarkIcon, Bars3Icon } from '@heroicons/react/24/solid'
+import { AuthContext } from '../providers/AuthProviders';
 const Header = () => {
     const [open, setOpen] = useState(false);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        logOut()
+            .then(result => { })
+            .catch(error => console.log(error.message))
+    }
     return (
         <nav className='bg-[#1C2B35] '>
             <div className='flex justify-between items-center px-3 lg:px-0 py-5 text-xl max-w-screen-xl mx-auto'>
@@ -22,6 +30,10 @@ const Header = () => {
                         <NavLink className={({ isActive }) => isActive ? 'text-[#FF9900]' : ''} to={'/order'}>Order</NavLink>
                         <NavLink className={({ isActive }) => isActive ? 'text-[#FF9900]' : ''} to={'/inventory'}>Inventory</NavLink>
                         <NavLink className={({ isActive }) => isActive ? 'text-[#FF9900]' : ''} to={'/login'}>Login</NavLink>
+                        <NavLink className={({ isActive }) => isActive ? 'text-[#FF9900]' : ''} to={'/signup'}>SignUp</NavLink>
+                        {
+                            user && <span>Welcome {user.email} <button className='border text-xs rounded-md p-2' onClick={handleLogout}>SignOut</button></span>
+                        }
                     </span>
                 </div>
             </div>

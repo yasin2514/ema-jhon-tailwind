@@ -53,7 +53,7 @@ const Shop = () => {
                     ></Product>)
                 }
             </div>
-            <div className='bg-[#ffcd9b] px-4 py-6 rounded-md h-screen' >
+            <div className='bg-[#ffcd9b] px-4 py-6 rounded-md' >
                 <Cart
                     cart={cart}
                     clearCart={clearCart}
