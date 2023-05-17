@@ -1,19 +1,19 @@
-const addToDb = id => {
+const addToDb = _id => {
     const shoppingCart = getShoppingCart();
-    const quantity = shoppingCart[id];
+    const quantity = shoppingCart[_id];
     if (quantity) {
-        shoppingCart[id] = quantity + 1;
+        shoppingCart[_id] = quantity + 1;
     }
     else {
-        shoppingCart[id] = 1;
+        shoppingCart[_id] = 1;
     }
     localStorage.setItem("shopping-cart", JSON.stringify(shoppingCart));
 }
 
-const removeFromDb = id => {
+const removeFromDb = _id => {
     const storeItem = getShoppingCart();
-    if (id in storeItem) {
-        delete storeItem[id];
+    if (_id in storeItem) {
+        delete storeItem[_id];
         localStorage.setItem("shopping-cart", JSON.stringify(storeItem))
     }
 }

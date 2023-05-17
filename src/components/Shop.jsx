@@ -11,10 +11,10 @@ const Shop = () => {
     useEffect(() => {
         const storedCart = getShoppingCart();
         let savedCart = [];
-        for (const id in storedCart) {
-            const addedProduct = products.find(product => product.id === id);
+        for (const _id in storedCart) {
+            const addedProduct = products.find(product => product._id === _id);
             if (addedProduct) {
-                const quantity = storedCart[id];
+                const quantity = storedCart[_id];
                 addedProduct.quantity = quantity;
                 savedCart.push(addedProduct);
             }
@@ -23,10 +23,10 @@ const Shop = () => {
     }, [])
 
     const handleClick = (product) => {
-        const exits = cart.find(pd => pd.id === product.id);
+        const exits = cart.find(pd => pd._id === product._id);
         if (exits) {
             exits.quantity = exits.quantity + 1;
-            const remaining = cart.filter(pd => pd.id !== product.id);
+            const remaining = cart.filter(pd => pd._id !== product._id);
             setCart([...remaining, exits])
         }
         else {
@@ -35,7 +35,7 @@ const Shop = () => {
         }
         // option 2
         // setCart([...cart,product])
-        addToDb(product.id);
+        addToDb(product._id);
     };
     const clearCart = () => {
         setCart([]);
@@ -47,7 +47,7 @@ const Shop = () => {
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-7'>
                 {
                     products.map(product => <Product
-                        key={product.id}
+                        key={product._id}
                         product={product}
                         handleClick={handleClick}
                     ></Product>)

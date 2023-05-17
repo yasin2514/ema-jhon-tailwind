@@ -1,7 +1,7 @@
 import React from 'react';
 import { TrashIcon } from '@heroicons/react/24/solid'
 const ReviewItem = ({ product, deleteItem }) => {
-    const { id, name, img, price, shipping, quantity } = product;
+    const { _id, name, img, price, shipping, quantity } = product;
 
     return (
         <div className='md:flex gap-5 mt-10 items-center border rounded-xl p-3' >
@@ -12,7 +12,7 @@ const ReviewItem = ({ product, deleteItem }) => {
                     <p>Price: <span className='text-orange-500'>${price}</span></p>
                     <p>Order quantity: <span className='text-orange-500'>{quantity}</span></p>
                 </div>
-                <button onClick={() => deleteItem(id)} className=' bg-red-100 hover:bg-red-200 rounded-full p-3'><TrashIcon className='w-10 text-red-500 hover:text-red-600'></TrashIcon></button>
+                <button onClick={() => deleteItem(_id)} className=' bg-red-100 hover:bg-red-200 rounded-full p-3'><TrashIcon className='w-10 text-red-500 hover:text-red-600'></TrashIcon></button>
             </div>
         </div>
     );

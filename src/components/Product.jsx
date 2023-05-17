@@ -2,7 +2,7 @@ import React from 'react';
 import { ShoppingCartIcon } from '@heroicons/react/24/solid'
 
 const Product = ({ product, handleClick }) => {
-    const { id, name, seller, price, ratings, img } = product;
+    const { name, seller, price, ratings, img } = product;
     return (
         <div className='border border-gray-300 rounded-lg flex flex-col overflow-hidden'>
             <div className='p-2 h-56 '>

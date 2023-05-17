@@ -8,7 +8,8 @@ const Login = () => {
     const navigate = useNavigate();
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
-    
+    const [show, setShow] = useState(false);
+
     const from = location.state?.from?.pathname || '/';
     const handleLogin = event => {
         event.preventDefault();
@@ -39,7 +40,14 @@ const Login = () => {
                 </div>
                 <div className='my-2'>
                     <label className='font-medium' htmlFor="password">Password</label>
-                    <input className='border rounded-md w-full p-2 mt-1' type="password" name="password" id="password" required placeholder='password' />
+                    <input className='border rounded-md w-full p-2 mt-1' type={show ? "text" : "password"} name="password" id="password" required placeholder='password' />
+                    <p onClick={() => setShow(!show)}><small>
+                        {
+                            show ?
+                                <span>hide password</span> :
+                                <span>show password</span>
+                        }
+                    </small></p>
                 </div>
                 <div className='mt-10'>
                     <input className='bg-orange-600  text-white rounded-md p-2 hover:bg-orange-700 w-full ' type="submit" value="Login" />
